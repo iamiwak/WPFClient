@@ -1,0 +1,72 @@
+﻿<Page x:Class="WPFClient.Pages.PartnersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFClient.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PartnersPage" Loaded="OnPageLoaded">
+
+    <Grid Background="#fff">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3"/>
+            <ColumnDefinition x:Name="DialogFrame" Width="0" MaxWidth="400"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Партнеры" Grid.ColumnSpan="2" FontSize="26" FontWeight="ExtraBold"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal">
+            <Button x:Name="BookAdd" Content="Добавить" Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5" Click="AddItem"/>
+            <Button x:Name="BookCopy" Content="Копировать" Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5" Click="CopyItem"/>
+            <Button x:Name="BookEdit" Content="Изменить" Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5" Click="EditItem"/>
+            <Button x:Name="BookDellete" Content="Удалить" Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5" Click="DeleteItem"/>
+
+            <Label Content="|" FontSize="24" FontWeight="Bold" Foreground="Gray" Margin="15,0,0,0"/>
+            <ComboBox x:Name="FilterComboBox" Width="150" Height="30" Margin="15,0,0,0"/>
+            <TextBox x:Name="FilterTextBox" Margin="5,0,5,0" Width="170" Height="30" TextChanged="UpdateFilterText"/>
+        </StackPanel>
+
+        <DockPanel Grid.Row="2" Grid.ColumnSpan="2">
+            <DataGrid x:Name="PartnersGrid" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Path=Name}"/>
+                    <DataGridTextColumn Header="Адрес" Binding="{Binding Path=Address}"/>
+                    <DataGridTextColumn Header="Город" Binding="{Binding Path=City}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+
+        <GridSplitter Grid.Column="1" Grid.Row="2" Width="3" HorizontalAlignment="Stretch" />
+
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
+            <Label x:Name="DialogTitle" Content="Добавить партнера" FontSize="16" FontWeight="Bold" Margin="5,0,0,0"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Content="Название" Margin="5,0,0,0" Width="130"/>
+                <TextBox x:Name="PartnerName" Width="150" Height="25" Margin="5,0,0,0" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Content="Адрес" Margin="5,0,0,0" Width="130"/>
+                <TextBox x:Name="Address" Width="150" Height="25" Margin="5,0,0,0" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Content="Город" Margin="5,0,0,0" Width="130"/>
+                <TextBox x:Name="City" Width="150" Height="25" Margin="5,0,0,0" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
+                <Button x:Name="ApplyButton" Content="Добавить партнера" Height="30" MinWidth="100" Padding="5,5,5,5" Margin="5,5,0,5" Click="ApplyChanges"/>
+                <Button x:Name="CancelButton" Content="Отменить" Height="30" Width="100" Padding="5,5,5,5" Margin="5,5,0,5" Click="CancelChanges"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

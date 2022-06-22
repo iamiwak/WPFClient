@@ -1,0 +1,52 @@
+﻿<Window x:Class="WPFClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFClient"
+        mc:Ignorable="d"
+        Title="WPF Client"
+        Width="1024" Height="576"
+        MinWidth="400" MinHeight="225"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="125" MinWidth="125" MaxWidth="200"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition MinWidth="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.RowSpan="2" Background="{StaticResource PrimaryColor}">
+            <Image Source="/Images/yacht.png" Width="64" Height="64"/>
+            <Label x:Name="RoleLabel" Content="Администратор" HorizontalAlignment="Center" FontWeight="Bold" FontSize="10"/>
+            <Button x:Name="BoatsButton" Content="Яхты" Click="MenuButtonClick"/>
+            <Button x:Name="AccessoriesButton" Content="Аксессуары" Click="MenuButtonClick"/>
+            <Button x:Name="ConstractsButton" Content="Контракты" Click="MenuButtonClick"/>
+            <Button x:Name="AccessoriesToBoatButton" Content="Аксессуары к яхтам" Click="MenuButtonClick"/>
+            <Button x:Name="InvoicesButton" Content="Счета" Click="MenuButtonClick"/>
+            <Button x:Name="OrdersButton" Content="Заказы" Click="MenuButtonClick"/>
+            <Button x:Name="OrderDetailsButton" Content="Детали заказов" Click="MenuButtonClick"/>
+            <Button x:Name="CustomersButton" Content="Покупатели" Click="MenuButtonClick"/>
+            <Button x:Name="SalePersonssButton" Content="Продавцы" Click="MenuButtonClick"/>
+            <Button x:Name="PartnersButton" Content="Партнеры" Click="MenuButtonClick"/>
+        </StackPanel>
+
+        <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Width="2" HorizontalAlignment="Stretch" Background="{StaticResource PrimaryColor}"/>
+        <Rectangle Grid.Column="2" Grid.Row="1" Fill="{StaticResource PrimaryColor}"/>
+
+        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="BackButton" Content="Назад" Style="{StaticResource NavigationButtons}"/>
+            <Button x:Name="NextButton" Content="Вперед" Style="{StaticResource NavigationButtons}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="CloseButton" Content="Закрыть страницу" Width="125" Style="{StaticResource NavigationButtons}"/>
+        </StackPanel>
+
+        <Frame Grid.Column="2" x:Name="RootFrame" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>
